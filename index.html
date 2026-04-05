@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Select Customs — Handcrafted custom die-cast model police and EMS emergency vehicles. Built to honor the departments that serve our communities." />
+  <title>Select Customs — Custom Model Emergency Vehicles</title>
+
+  <style>
+    /* ── RESET & TOKENS ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #1a2540;
+      --navy2: #243055;
+      --red:   #c0392b;
+      --gold:  #f0b400;
+      --bg:    #f0f2f5;
+      --white: #ffffff;
+      --text:  #1a1a2e;
+      --muted: #555e77;
+      --radius: 10px;
+      --shadow: 0 4px 18px rgba(0,0,0,.12);
+      --transition: .2s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 17px;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+    .section    { padding: 4.5rem 1.5rem; }
+    h2.section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: .4rem;
+    }
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: .85rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    .btn:hover { opacity: .88; transform: translateY(-1px); }
+    .btn-red   { background: var(--red);   color: var(--white); }
+    .btn-navy  { background: var(--white); color: var(--navy);  }
+    .btn-gold  { background: var(--gold);  color: var(--text);  }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 10px rgba(0,0,0,.35);
+    }
+    .nav-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: .85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .nav-brand img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .nav-brand-name {
+      color: var(--white);
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+    .nav-brand-name span { color: var(--gold); }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--white);
+      font-size: .95rem;
+      font-weight: 600;
+      padding: .45rem .9rem;
+      border-radius: 6px;
+      background: rgba(255,255,255,.07);
+      transition: background var(--transition);
+    }
+    .nav-links a:hover { background: var(--red); }
+
+    /* hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: .4rem;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    @media (max-width: 680px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: var(--navy2);
+        flex-direction: column;
+        padding: 1rem 1.5rem 1.5rem;
+        gap: .4rem;
+        box-shadow: 0 6px 20px rgba(0,0,0,.3);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: .7rem 1rem; font-size: 1.05rem; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(145deg, #0e1829 0%, var(--navy) 55%, #2a1a10 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><rect width="60" height="60" fill="none"/><path d="M0 30h60M30 0v60" stroke="rgba(255,255,255,.03)" stroke-width="1"/></svg>');
+    }
+    .hero-logo {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 0 0 8px rgba(240,180,0,.15);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #c8d0e8;
+      max-width: 580px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* police-light stripe */
+    .stripe {
+      height: 7px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--red) 0px 28px,
+        var(--white) 28px 56px,
+        var(--navy) 56px 84px
+      );
+    }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--white); }
+
+    /* filter tabs */
+    .filter-bar {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .filter-btn {
+      padding: .5rem 1.2rem;
+      border-radius: 999px;
+      border: 2px solid #d0d5e0;
+      background: var(--white);
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+    .filter-btn.active { background: var(--navy); border-color: var(--navy); color: var(--white); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.25rem;
+    }
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #e8ecf2;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .gallery-item:hover {
+      border-color: var(--red);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.18);
+    }
+    .gallery-item.hidden { display: none; }
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    .gallery-caption {
+      padding: .6rem 1rem;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--navy);
+      background: var(--white);
+      border-top: 3px solid var(--red);
+    }
+    .gallery-badge {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      padding: .15rem .55rem;
+      border-radius: 4px;
+      margin-bottom: .25rem;
+    }
+    .badge-diamond { background: #dbeafe; color: #1e40af; }
+    .badge-police  { background: #fef3c7; color: #92400e; }
+    .badge-miami   { background: #dcfce7; color: #166534; }
+    .gallery-hint  { text-align: center; font-size: .9rem; color: var(--muted); margin-top: 1.5rem; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.93);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      padding: 1.5rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img-wrap {
+      position: relative;
+      max-width: 90vw;
+      max-height: 76vh;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .lightbox-img-wrap img {
+      max-width: 80vw;
+      max-height: 76vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+    .lb-arrow {
+      background: rgba(255,255,255,.15);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--transition);
+    }
+    .lb-arrow:hover { background: var(--red); }
+    .lb-caption {
+      color: #ddd;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .lb-counter { font-size: .85rem; color: #888; }
+    .lb-close {
+      background: var(--red);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: .65rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity var(--transition);
+    }
+    .lb-close:hover { opacity: .85; }
+
+    /* ── HOW TO ORDER ── */
+    #order { background: var(--bg); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .step {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-top: 5px solid var(--red);
+    }
+    .step-num {
+      width: 56px; height: 56px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 auto 1rem;
+    }
+    .step h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: .4rem; }
+    .step p  { font-size: .95rem; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .contact-info h3  { font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: .75rem; }
+    .contact-info p   { font-size: 1rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .contact-detail   { display: flex; align-items: flex-start; gap: .75rem; margin-bottom: 1rem; }
+    .contact-icon     { font-size: 1.4rem; flex-shrink: 0; }
+    .contact-detail p { margin-bottom: 0; font-size: 1rem; color: var(--text); }
+    .contact-detail strong { display: block; font-size: .8rem; text-transform: uppercase; color: var(--muted); letter-spacing: .5px; }
+
+    /* form */
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row     { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    .contact-form label { font-size: .85rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: .3rem; }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: .75rem 1rem;
+      border: 2px solid #d0d5e0;
+      border-radius: 8px;
+      font-size: .95rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color var(--transition);
+      outline: none;
+    }
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus { border-color: var(--navy); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+
+    .form-success {
+      display: none;
+      background: #dcfce7;
+      border: 2px solid #86efac;
+      border-radius: 8px;
+      padding: 1.2rem;
+      color: #166534;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: #8890aa;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: .9rem;
+    }
+    footer strong { color: var(--white); }
+    footer .footer-sub { margin-top: .4rem; font-size: .8rem; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">
+      <img src="LOGO.jpg" alt="Select Customs Logo" />
+      <span class="nav-brand-name">Select <span>Customs</span></span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#order">How to Order</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <img class="hero-logo" src="LOGO.jpg" alt="Select Customs" />
+  <h1>Custom Model <span>Emergency Vehicles</span></h1>
+  <p>Handcrafted die-cast models of police and EMS vehicles — built to honor the departments that serve our communities.</p>
+  <div class="hero-btns">
+    <a href="#gallery" class="btn btn-red">View the Gallery</a>
+    <a href="#order"   class="btn btn-navy">How to Order</a>
+  </div>
+</section>
+<div class="stripe"></div>
+
+<!-- ═══════════════ GALLERY ═══════════════ -->
+<section id="gallery" class="section">
+  <div class="container">
+    <h2 class="section-title">Model Gallery</h2>
+    <p class="section-intro">Each model is individually customized with authentic department markings and decals. Click any photo to enlarge it.</p>
+
+    <!-- Filter tabs -->
+    <div class="filter-bar" role="group" aria-label="Gallery filter">
+      <button class="filter-btn active" data-filter="all">All Models</button>
+      <button class="filter-btn" data-filter="police">Police &amp; EMS</button>
+      <button class="filter-btn" data-filter="miami">Miami-Dade</button>
+      <button class="filter-btn" data-filter="diamond">Diamond Series</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+      <!-- ── MIAMI-DADE ── -->
+      <div class="gallery-item" data-category="miami" data-caption="Miami-Dade Police — Dodge Charger">
+        <img src="100%20%3D%20Revised%20Miami%20Dade%20Pics/P1010001.JPG" alt="Miami-Dade Police Dodge Charger" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-miami">Miami-Dade</span><br>
+          Miami-Dade Police — Dodge Charger
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="miami" data-caption="Miami-Dade Series — No. 2">
+        <img src="100%20%3D%20Revised%20Miami%20Dade%20Pics/P1010002.JPG" alt="Miami-Dade Series 2" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-miami">Miami-Dade</span><br>
+          Miami-Dade Series — No. 2
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="miami" data-caption="Miami-Dade Series — No. 3">
+        <img src="100%20%3D%20Revised%20Miami%20Dade%20Pics/P1010003.JPG" alt="Miami-Dade Series 3" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-miami">Miami-Dade</span><br>
+          Miami-Dade Series — No. 3
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="miami" data-caption="Miami-Dade Series — No. 4">
+        <img src="100%20%3D%20Revised%20Miami%20Dade%20Pics/P1010004.JPG" alt="Miami-Dade Series 4" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-miami">Miami-Dade</span><br>
+          Miami-Dade Series — No. 4
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="miami" data-caption="Miami-Dade Series — No. 5">
+        <img src="100%20%3D%20Revised%20Miami%20Dade%20Pics/P1010005.JPG" alt="Miami-Dade Series 5" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-miami">Miami-Dade</span><br>
+          Miami-Dade Series — No. 5
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="miami" data-caption="Miami-Dade Series — No. 6">
+        <img src="100%20%3D%20Revised%20Miami%20Dade%20Pics/P1010006.JPG" alt="Miami-Dade Series 6" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-miami">Miami-Dade</span><br>
+          Miami-Dade Series — No. 6
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="miami" data-caption="Miami-Dade Series — No. 7">
+        <img src="100%20%3D%20Revised%20Miami%20Dade%20Pics/P1010007.JPG" alt="Miami-Dade Series 7" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-miami">Miami-Dade</span><br>
+          Miami-Dade Series — No. 7
+        </div>
+      </div>
+
+      <!-- ── POLICE & EMS ── -->
+      <div class="gallery-item" data-category="police" data-caption="CPD Series — No. 1">
+        <img src="CPD%201.JPG" alt="CPD Series 1" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          CPD Series — No. 1
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="CPD Series — No. 2">
+        <img src="CPD%202.JPG" alt="CPD Series 2" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          CPD Series — No. 2
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Chevy Caprice — L09">
+        <img src="PC%20-%20Chevy%20Caprise%20L09.JPG" alt="Chevy Caprice L09" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          Chevy Caprice — L09
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Ford Interceptor — Unit 664">
+        <img src="PC%20-%20Interceptor%20664.JPG" alt="Ford Interceptor 664" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          Ford Interceptor — Unit 664
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Ford Interceptor — Unit 81">
+        <img src="PC%20-%20Interceptor%2081.JPG" alt="Ford Interceptor 81" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          Ford Interceptor — Unit 81
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="PC01 — Driver Side">
+        <img src="PC01%20Driver.jpg" alt="PC01 Driver Side" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          PC01 — Driver Side
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="PC01 — Passenger Side">
+        <img src="PC01%20Passenger.jpg" alt="PC01 Passenger Side" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          PC01 — Passenger Side
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="PC02 — Driver Side">
+        <img src="PC02%20Driver.jpg" alt="PC02 Driver Side" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          PC02 — Driver Side
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="PC02 — Passenger Side">
+        <img src="PC02%20Passenger.jpg" alt="PC02 Passenger Side" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          PC02 — Passenger Side
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="PC03 — Driver Side">
+        <img src="PC03%20Driver.jpg" alt="PC03 Driver Side" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          PC03 — Driver Side
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="PC03 — Passenger Side">
+        <img src="PC03%20Passenger.jpg" alt="PC03 Passenger Side" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          PC03 — Passenger Side
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="PC05 — Driver Side">
+        <img src="PC05%20Driver.jpg" alt="PC05 Driver Side" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          PC05 — Driver Side
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="PC05 — Passenger Side">
+        <img src="PC05%20Passenger.jpg" alt="PC05 Passenger Side" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          PC05 — Passenger Side
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Custom Police Cruiser — No. 1">
+        <img src="P1010001.JPG" alt="Custom Police Cruiser 1" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          Custom Police Cruiser — No. 1
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Custom Police Cruiser — No. 2">
+        <img src="P1010002.JPG" alt="Custom Police Cruiser 2" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police</span><br>
+          Custom Police Cruiser — No. 2
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Custom Emergency Vehicle — No. 3">
+        <img src="P1010003.JPG" alt="Custom Emergency Vehicle 3" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police &amp; EMS</span><br>
+          Custom Emergency Vehicle — No. 3
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Custom Emergency Vehicle — No. 4">
+        <img src="P1010004.JPG" alt="Custom Emergency Vehicle 4" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police &amp; EMS</span><br>
+          Custom Emergency Vehicle — No. 4
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Custom Emergency Vehicle — No. 5">
+        <img src="P1010005.JPG" alt="Custom Emergency Vehicle 5" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police &amp; EMS</span><br>
+          Custom Emergency Vehicle — No. 5
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Custom Emergency Vehicle — No. 6">
+        <img src="P1010006.JPG" alt="Custom Emergency Vehicle 6" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police &amp; EMS</span><br>
+          Custom Emergency Vehicle — No. 6
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Custom Emergency Vehicle — No. 8">
+        <img src="P1010008.JPG" alt="Custom Emergency Vehicle 8" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police &amp; EMS</span><br>
+          Custom Emergency Vehicle — No. 8
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="police" data-caption="Custom Emergency Vehicle — No. 10">
+        <img src="P1010010.JPG" alt="Custom Emergency Vehicle 10" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-police">Police &amp; EMS</span><br>
+          Custom Emergency Vehicle — No. 10
+        </div>
+      </div>
+
+      <!-- ── DIAMOND SERIES ── -->
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 1">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%201.jpg" alt="Diamond Series 1" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 1
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 2">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%202.jpg" alt="Diamond Series 2" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 2
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 3">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%203.jpg" alt="Diamond Series 3" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 3
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 4">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%204.jpg" alt="Diamond Series 4" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 4
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 5">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%205.jpg" alt="Diamond Series 5" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 5
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 6">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%206.jpg" alt="Diamond Series 6" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 6
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 8">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%208.jpg" alt="Diamond Series 8" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 8
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 10">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%2010.jpg" alt="Diamond Series 10" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 10
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 11">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%2011.jpg" alt="Diamond Series 11" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 11
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 12">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%2012.jpg" alt="Diamond Series 12" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 12
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 13">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%2013.jpg" alt="Diamond Series 13" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 13
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="diamond" data-caption="Diamond Series — No. 14">
+        <img src="%5B06%5D%20Diamond%20Series/DS%20-%2014.jpg" alt="Diamond Series 14" loading="lazy" />
+        <div class="gallery-caption">
+          <span class="gallery-badge badge-diamond">Diamond Series</span><br>
+          Diamond Series — No. 14
+        </div>
+      </div>
+
+    </div><!-- /gallery-grid -->
+
+    <p class="gallery-hint">Click any photo to enlarge — use arrow keys or buttons to browse.</p>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ═══════════════ HOW TO ORDER ═══════════════ -->
+<section id="order" class="section">
+  <div class="container">
+    <h2 class="section-title">How to Order</h2>
+    <p class="section-intro">Getting a custom model is simple — just follow these four steps.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Browse the Gallery</h3>
+        <p>Look through the photos for ideas. We can replicate any department's markings and colors.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Send Us a Message</h3>
+        <p>Fill out the contact form below with your department name, vehicle type, and any reference photos.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Pay via PayPal</h3>
+        <p>Once we agree on a price, a deposit is collected through PayPal. The balance is due when finished.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>We Ship to You</h3>
+        <p>Your finished model is carefully packed and shipped anywhere in the United States.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-intro">Ready to get started? Fill out the form and we'll get back to you quickly.</p>
+
+    <div class="contact-grid">
+
+      <!-- Left: info -->
+      <div class="contact-info">
+        <h3>Select Customs</h3>
+        <p>We build every model by hand and love hearing from customers. Tell us what department you're honoring and we'll make it happen.</p>
+
+        <div class="contact-detail">
+          <span class="contact-icon">📧</span>
+          <p><strong>Email</strong>selectcustoms@email.com</p>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-icon">📦</span>
+          <p><strong>Shipping</strong>Anywhere in the United States</p>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-icon">💳</span>
+          <p><strong>Payment</strong>PayPal — deposit required to begin</p>
+        </div>
+
+        <a href="https://www.paypal.com/paypalme/YOURUSERNAME" class="btn btn-gold" target="_blank" rel="noopener" style="margin-top:.5rem;">
+          💰 Pay with PayPal
+        </a>
+      </div>
+
+      <!-- Right: form -->
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div>
+            <label for="fname">First Name *</label>
+            <input type="text" id="fname" name="first_name" required placeholder="John" />
+          </div>
+          <div>
+            <label for="lname">Last Name *</label>
+            <input type="text" id="lname" name="last_name" required placeholder="Smith" />
+          </div>
+        </div>
+
+        <div>
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com" />
+        </div>
+
+        <div>
+          <label for="department">Department / Organization</label>
+          <input type="text" id="department" name="department" placeholder="e.g. Miami-Dade Police Dept." />
+        </div>
+
+        <div>
+          <label for="vehicle">Vehicle Type</label>
+          <select id="vehicle" name="vehicle_type">
+            <option value="">— Select one —</option>
+            <option>Police Cruiser</option>
+            <option>Sheriff's Vehicle</option>
+            <option>EMS / Ambulance</option>
+            <option>Fire / Rescue</option>
+            <option>Other / Custom</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message">Tell us about your model *</label>
+          <textarea id="message" name="message" required placeholder="Department name, vehicle model, colors, markings, any photos you can share…"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-red" style="align-self:flex-start;">Send Message →</button>
+
+        <div class="form-success" id="formSuccess">
+          ✅ Message sent! We'll get back to you shortly.
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <p><strong>Select Customs</strong> — Handcrafted Custom Model Emergency Vehicles</p>
+  <p class="footer-sub">Ships Nationwide &nbsp;|&nbsp; Payment via PayPal &nbsp;|&nbsp; selectcustoms@email.com</p>
+</footer>
+
+<!-- ═══════════════ LIGHTBOX ═══════════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lightbox-img-wrap">
+    <button class="lb-arrow" id="lbPrev" aria-label="Previous photo">&#8592;</button>
+    <img id="lightboxImg" src="" alt="" />
+    <button class="lb-arrow" id="lbNext" aria-label="Next photo">&#8594;</button>
+  </div>
+  <p class="lb-caption" id="lbCaption"></p>
+  <p class="lb-counter" id="lbCounter"></p>
+  <button class="lb-close" id="lbClose">✕ Close</button>
+</div>
+
+<!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+<script>
+  /* ── Mobile nav ── */
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+    });
+  });
+
+  /* ── Gallery filter ── */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      galleryItems.forEach(item => {
+        item.classList.toggle('hidden',
+          filter !== 'all' && item.dataset.category !== filter
+        );
+      });
+      rebuildVisible();
+    });
+  });
+
+  /* ── Lightbox ── */
+  let visibleItems = [];
+  let currentIdx  = 0;
+
+  function rebuildVisible() {
+    visibleItems = galleryItems.filter(i => !i.classList.contains('hidden'));
+  }
+  rebuildVisible();
+
+  function openLightbox(idx) {
+    currentIdx = idx;
+    const item = visibleItems[currentIdx];
+    const img  = item.querySelector('img');
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightboxImg').alt = img.alt;
+    document.getElementById('lbCaption').textContent = item.dataset.caption || img.alt;
+    document.getElementById('lbCounter').textContent =
+      `${currentIdx + 1} / ${visibleItems.length}`;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function navigate(dir) {
+    currentIdx = (currentIdx + dir + visibleItems.length) % visibleItems.length;
+    openLightbox(currentIdx);
+  }
+
+  galleryItems.forEach((item, _) => {
+    item.addEventListener('click', () => {
+      rebuildVisible();
+      const idx = visibleItems.indexOf(item);
+      if (idx >= 0) openLightbox(idx);
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', () => navigate(-1));
+  document.getElementById('lbNext').addEventListener('click', () => navigate(1));
+
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'ArrowLeft')  navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+
+  /* ── Smooth scroll for nav links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* ── Contact form (Formspree AJAX) ── */
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        document.getElementById('formSuccess').style.display = 'block';
+        btn.style.display = 'none';
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
